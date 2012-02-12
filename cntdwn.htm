@@ -1,0 +1,63 @@
+<html>
+<head>
+<script type="text/javascript">
+var mt,d,h,m,s;
+function startTime()
+{
+var today=new Date();
+mt=today.getMonth()+1; 
+d=today.getDate();
+h=today.getHours();
+m=today.getMinutes();
+s=today.getSeconds();
+// add a zero in front of numbers<10
+m=checkTime(m);
+s=checkTime(s);
+document.getElementById('txt').innerHTML=mt+":"+d+":"+h+":"+m+":"+s;
+t=setTimeout('startTime()',500);
+}
+function cntdwn()
+{ startTime();
+var s1=60-s;
+  var m1=60-m;
+  var h1=24-h;
+  if(mt<=9)
+  {if(d<14)
+   { var mt1=9-mt;
+	var d1=13-d;}
+	else
+	{ mt1=8-mt;
+	  d1=43-d; }
+	}	else
+	{  if(d<14)
+    {mt1=21-mt;
+     d1=13-d;}
+	 else
+	{ mt1=20-mt;
+	 d1=43-d;}
+	}
+	m1=checkTime(m1);
+s1=checkTime(s1);
+document.getElementById('txt1').innerHTML=mt1+":"+d1+":"+h1+":"+m1+":"+s1;
+t=setTimeout('cntdwn()',500);
+}
+function checkTime(i)
+{
+if (i<10)
+  {
+  i="0" + i;
+  }
+return i;
+}
+</script>
+</head>
+
+<body onload="cntdwn()">
+time:
+<div id="txt"></div>
+countdown:
+<div id="txt1"></div>
+
+</body>
+</html>
+
